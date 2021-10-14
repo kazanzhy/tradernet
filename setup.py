@@ -3,10 +3,20 @@
 
 """The setup script."""
 
-import setuptools
+from setuptools import setup
+from pathlib import Path
 
-with open('docs/README.rst') as fo:
-    README = fo.read()
+
+def get_version(filepath):
+    var = {}
+    for line in Path(filepath).read_text().splitlines():
+        if '__version__' in line:
+            exec(line, var)
+    return var['__version__']
+
+
+version = get_version('tradernet/__init__.py')
+description = Path('docs/README.rst').read_text()
 
 install_requirements = [
     'urllib3',
@@ -14,30 +24,30 @@ install_requirements = [
 ]
 
 setup_requirements = [
-    # TODO: put setup requirements (distutils extensions, etc.) here
+    # put setup requirements (distutils extensions, etc.) here
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
+    # put package test requirements here
 ]
 
-setuptools.setup(
+setup(
     name='tradernet',
-    version='0.1.3',
+    version=version,
     description="Interact with Tradernet API",
-    long_description=README,
+    long_description=description,
     author="Dmytro Kazanzhy",
     author_email='dkazanzhy@gmail.com',
     url='https://github.com/kazanzhy/tradernet',
     download_url='https://github.com/kazanzhy/tradernet/tarball/main',
-    packages=setuptools.find_packages(where="src"),
-    package_dir={"": "src"},
+    packages=["tradernet"],
+    package_dir={"tradernet": "./tradernet"},
+    test_suite='tests',
     include_package_data=True,
+    python_requires=">=3.8",
     install_requires=install_requirements,
     setup_requires=setup_requirements,
-    test_suite='tests',
     tests_require=test_requirements,
-    python_requires=">=3.6",
     license="MIT license",
     zip_safe=False,
     keywords='tradernet',
