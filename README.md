@@ -1,5 +1,11 @@
 # Tradernet API
 [![Upload to PyPI](https://github.com/kazanzhy/tradernet/actions/workflows/pypi-publish.yml/badge.svg)](https://github.com/kazanzhy/tradernet/actions/workflows/pypi-publish.yml)
+[![PyPI version](https://badge.fury.io/py/tradernet.svg)](https://badge.fury.io/py/tradernet)
+
+
+[![PyPi version](https://pypip.in/v/$REPO/badge.png)](https://crate.io/packages/$REPO/)
+[![PyPi downloads](https://pypip.in/d/$REPO/badge.png)](https://crate.io/packages/$REPO/)
+
 
 ## Description
 This Python package is unofficial wrapper for Tradernet Public API.  
